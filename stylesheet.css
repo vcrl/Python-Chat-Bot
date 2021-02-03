@@ -1,0 +1,25 @@
+#UserInput{
+    text-align: left;
+}
+
+#UserInputForm{
+    text-align: end;
+}
+
+#UserMessage{
+    vertical-align:middle;
+}
+
+#BotMessage{
+    width:50%;
+}
+
+#BotMessageBody{
+    background-color: dodgerblue;
+    color:white;
+}
+
+#ChatBox{
+    padding:1%;
+    flex-wrap: wrap;
+}
