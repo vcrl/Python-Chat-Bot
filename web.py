@@ -4,6 +4,7 @@ from wordparser.parser import Parser
 
 app = Flask(__name__)
 
+word_parser = Parser()
 
 @app.route('/', methods = ['GET', 'POST'])
 def index():
@@ -12,6 +13,5 @@ def index():
 @app.route('/getuserdata', methods=['POST'])
 def getUserData():
     data = request.form['userinput']
-    #parser = Parser()
-    #print(parser.parse_input(data))
+    print(word_parser.parse_input(data))
     return json.dumps({'status':'OK', 'input':data})
