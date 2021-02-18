@@ -10,14 +10,12 @@ function sendMessageFromClient(text) { // réécrire
   }
 
   function sendMessageFromBot(text) { // réécrires
-    html = `<div class="BotMessage card border-0 lh-1">
-    <p class="DisplayNames card-title fw-bold text-primary">🤖 Bot</p>
-    <div class="BotMessageBody card-body text-break border border-primary border-2 rounded">
-      `+ text + `
-    </div>
-  </div>`;
-
-    $('#ChatBox').append(html);
+    
+    var id = Date.now();
+    $('#ChatBox').append(`<div id="`+ id +`" class="BotMessage card border-0 lh-1"></div>`);
+    $('#' + id).append(`<p class="DisplayNames card-title fw-bold text-primary">🤖 Bot</p>`);
+    $('#' + id).append(`<div class="BotMessageBody card-body text-break border border-primary border-2 rounded"></div>`);
+    $('#' + id + ' .BotMessageBody').html(text);
   }
 
   $(function () { // Quand la page a fini de charger
@@ -34,8 +32,10 @@ function sendMessageFromClient(text) { // réécrire
         url : '/getuserdata',
         type : "POST",
         data: {userinput : content},
+        dataType: "json",
         success: function(data){
           console.log(data);
+          sendMessageFromBot(data.input)
         },
         error: function(error){
           console.log(error);
