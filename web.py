@@ -1,9 +1,10 @@
 from flask import Flask, render_template, request, jsonify
-import googlemaps
 import json
+from random import choice
 from wordparser.parser import Parser
 from apis.googlemaps import GoogleMapsApi
 from apis.wikipedia import Wikipedia
+from answers.const_answers import ANSWERS, ERRORS
 
 app = Flask(__name__)
 word_parser = Parser()
@@ -26,7 +27,11 @@ def getUserData():
     wiki_info = wiki_api.get_api_request(lat, lng, tostring_data)
     wiki_answer = wiki_api.return_place_info(wiki_info)
     return jsonify({
-                    'answer':f"Voici un fact : </br><b>{wiki_info}</b></br><justify>{wiki_answer}.</justify>",
+                    'answer':f"""{choice(ANSWERS)}
+                                </br>
+                                <b>{wiki_info}</b>
+                                </br></br>
+                                <justify>{wiki_answer}.</justify>""",
                     'lat':lat,
                     'lng':lng
                     })

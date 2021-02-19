@@ -1,5 +1,7 @@
 import googlemaps
 import requests
+from random import choice
+from answers.const_answers import ERRORS
 
 class GoogleMapsApi():
     def __init__(self):
@@ -11,6 +13,9 @@ class GoogleMapsApi():
         """
         request = requests.get(url)
         jsonrequest =  request.json()
-        result = jsonrequest["results"][0]["geometry"]["location"]
-        return result
+        try:
+            result = jsonrequest["results"][0]["geometry"]["location"]
+            return result
+        except IndexError:
+            return choice(ERRORS)
 
