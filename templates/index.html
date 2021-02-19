@@ -53,11 +53,29 @@
     </form>
   </div>
 
-  <div class="container">
-    Google Maps
+  <div class="container" id="map" style="width:100%;height:400px">
   </div>
 
   <script src="{{ url_for('static', filename= 'js/script.js') }}"></script>
+  <script
+      src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDPJtzrcOw2vT2zAVpENBzC7s4CkunsTfc&callback=initMap"
+      async>
+    </script>
+  <script>
+    var map;
+
+    function initMap() {
+      map = new google.maps.Map(document.getElementById("map"), {
+        center: { lat: -34.397, lng: 150.644 },
+        zoom: 8,
+      });
+      const marker = new google.maps.Marker({
+        position: { lat: -34.397, lng: 150.644 },
+        map: map,
+      });
+    }
+    
+  </script>
 </body>
 
 </html>

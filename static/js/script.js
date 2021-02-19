@@ -1,17 +1,15 @@
-function sendMessageFromClient(text) { // réécrire
-    html = `<div class="UserMessage card text-end border-0">
-    <p class="card-title fw-bold">Vous</p>
-    <div class="card-body text-break">
-      `+ text + `
-    </div>
-  </div>`;
-
-    $('#ChatBox').append(html);
+function sendMessageFromClient(text) { 
+  
+    let id = Date.now();
+    $('#ChatBox').append(`<div id="`+ id +`" class="UserMessage card text-end border-0"></div>`);
+    $('#' + id).append(`<p class="card-title fw-bold">Vous</p>`)
+    $('#' + id).append(`<div class="UserMessageBody card-body text-break"></div>`)
+    $('#' + id + ' .UserMessageBody').html(text)
   }
 
   function sendMessageFromBot(text) { // réécrires
     
-    var id = Date.now();
+    let id = Date.now();
     $('#ChatBox').append(`<div id="`+ id +`" class="BotMessage card border-0 lh-1"></div>`);
     $('#' + id).append(`<p class="DisplayNames card-title fw-bold text-primary">🤖 Bot</p>`);
     $('#' + id).append(`<div class="BotMessageBody card-body text-break border border-primary border-2 rounded"></div>`);
@@ -35,13 +33,25 @@ function sendMessageFromClient(text) { // réécrire
         dataType: "json",
         success: function(data){
           console.log(data);
-          sendMessageFromBot(data.input)
+          sendMessageFromBot(data.answer)
+          initMap(data.lat, data.lng);
         },
         error: function(error){
           console.log(error);
         }
       })
 
+      let map;
+      function initMap(dlat, dlng) {
+        map = new google.maps.Map(document.getElementById("map"), {
+          center: { lat: dlat, lng: dlng },
+          zoom: 8,
+        });
+        const marker = new google.maps.Marker({
+          position: { lat: dlat, lng: dlng },
+          map: map,
+        });
+      }
       return false; // Permet de ne pas recharger la page
     });
 
