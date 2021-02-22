@@ -1,5 +1,14 @@
+/*
+  JS scripts managing all the functions regarding the user's and bot's answers.
+  Also contains an AJAX request to send and receive data to/from Flask.
+*/
+
 function sendMessageFromClient(text) { 
-  
+  /*
+    Function used to send a message from the user side.
+    * Arguments:
+      - text : contains the user's input.
+    */
     let id = Date.now();
     $('#ChatBox').append(`<div id="`+ id +`" class="UserMessage card text-end border-0"></div>`);
     $('#' + id).append(`<p class="card-title fw-bold">Vous</p>`)
@@ -8,7 +17,11 @@ function sendMessageFromClient(text) {
   }
 
   function sendMessageFromBot(text) { // réécrires
-    
+    /*
+    Function used to send a message from the bot side.
+    * Arguments:
+      - text : contains the bot's answer.
+    */
     let id = Date.now();
     $('#ChatBox').append(`<div id="`+ id +`" class="BotMessage card border-0 lh-1"></div>`);
     $('#' + id).append(`<p class="DisplayNames card-title fw-bold text-primary">🤖 Bot</p>`);
@@ -17,16 +30,25 @@ function sendMessageFromClient(text) {
   }
 
   $(function () { // Quand la page a fini de charger
-
-    $('#UserInputForm').on('submit', function (event) { // Lorsque le formulaire avec l'id UserInputForm est envoyé (soit entré, soit cliquer sur le bouton)
+    $('#UserInputForm').on('submit', function (event) {
+    /*
+    Function used to execute some code once the submit button
+    from the form with id UserInputForm is pressed (or enter key
+    pressed).
+    * Return:
+      false : to prevent the page from reloading.
+    */
       event.preventDefault();
 
-      var content = $('#UserInput').val(); // Récupération des données de l'élement html avec l'id UserInput
-      $('#UserInput').val(""); // Écriture de l'attribut value par une chaine de caractère vide
+      var content = $('#UserInput').val();
+      $('#UserInput').val("");
 
       sendMessageFromClient(content);
 
       $.ajax({
+        /*
+        AJAX request made to send and receive data to/from Flask.
+        */
         url : '/getuserdata',
         type : "POST",
         data: {userinput : content},
@@ -43,6 +65,15 @@ function sendMessageFromClient(text) {
 
       let map;
       function initMap(dlat, dlng) {
+        /*
+        Function used to update the interactive map on the
+        application. It also updates the cursor on the map.
+        * Arguments:
+          - dlat : meaning "data latitude". Corresponds to the
+          latitude received from the AJAX request, from Flask.
+          - dlng : meaning "data longitude". Corresponds to the
+          longitude received from the AJAX request, from Flask.
+        */
         map = new google.maps.Map(document.getElementById("map"), {
           center: { lat: dlat, lng: dlng },
           zoom: 8,
@@ -52,7 +83,7 @@ function sendMessageFromClient(text) {
           map: map,
         });
       }
-      return false; // Permet de ne pas recharger la page
+      return false;
     });
 
   });
