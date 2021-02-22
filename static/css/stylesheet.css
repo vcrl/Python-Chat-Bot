@@ -1,5 +1,7 @@
 #UserInput{
     text-align: left;
+    background-color: #121212;
+    color: white;
 }
 
 #UserInputForm{
@@ -10,7 +12,6 @@
 .UserInputContainer{
     border-top: none;
     padding: 1%;
-    color:white;
 }
 
 .UserMessage{
