@@ -10,7 +10,7 @@ function sendMessageFromClient(text) {
       - text : contains the user's input.
     */
     let id = Date.now();
-    $('#ChatBox').append(`<div id="`+ id +`" class="UserMessage card text-end border-0" style="background-color: #121212"></div>`);
+    $('#ChatBox').append(`<div id="`+ id +`" class="UserMessage card text-end border-0" style="background-color: #121212;color: white"></div>`);
     $('#' + id).append(`<p class="card-title fw-bold">Vous</p>`)
     $('#' + id).append(`<div class="UserMessageBody card-body text-break"></div>`)
     $('#' + id + ' .UserMessageBody').html(text)
