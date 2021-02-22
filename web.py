@@ -50,7 +50,7 @@ def getUserData():
                                     </br></br>
                                     <justify>{wiki_answer}.</justify>
                                     </br></br>
-                                    <b>...Oh et voilà l'addresse pour y aller
+                                    <b>...Oh et voilà l'adresse pour y aller
                                     </br></br>
                                     </b>► <u>{address["street_number"]}, 
                                     {address["street_name"]}, {address["city"]}</u>

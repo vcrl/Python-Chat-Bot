@@ -10,7 +10,7 @@ function sendMessageFromClient(text) {
       - text : contains the user's input.
     */
     let id = Date.now();
-    $('#ChatBox').append(`<div id="`+ id +`" class="UserMessage card text-end border-0"></div>`);
+    $('#ChatBox').append(`<div id="`+ id +`" class="UserMessage card text-end border-0" style="background-color: #121212"></div>`);
     $('#' + id).append(`<p class="card-title fw-bold">Vous</p>`)
     $('#' + id).append(`<div class="UserMessageBody card-body text-break"></div>`)
     $('#' + id + ' .UserMessageBody').html(text)
@@ -23,7 +23,7 @@ function sendMessageFromClient(text) {
       - text : contains the bot's answer.
     */
     let id = Date.now();
-    $('#ChatBox').append(`<div id="`+ id +`" class="BotMessage card border-0 lh-1"></div>`);
+    $('#ChatBox').append(`<div id="`+ id +`" class="BotMessage card border-0 lh-1" style="background-color: #121212"></div>`);
     $('#' + id).append(`<p class="DisplayNames card-title fw-bold text-primary">🤖 Bot</p>`);
     $('#' + id).append(`<div class="BotMessageBody card-body text-break border border-primary border-2 rounded"></div>`);
     $('#' + id + ' .BotMessageBody').html(text);
