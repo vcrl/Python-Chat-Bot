@@ -1,0 +1,7 @@
+.vs/
+.vscode/
+env/
+env-test/
+__pycache__/
+bdd.mwb
+bdd.mwb.bak
