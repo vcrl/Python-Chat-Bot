@@ -10,30 +10,30 @@
 
   <script src="https://code.jquery.com/jquery-3.5.1.min.js" integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0=" crossorigin="anonymous"></script>
 
-  <title>Chat Bot</title>
+  <title>Ask'GrandPy</title>
   <link rel="icon" href="{{ url_for('static', filename= 'img/favicon.ico') }}">
 
 </head>
 
-<body>
+<body style="background-color: #121212;">
 
-  <nav class="navbar navbar-light bg-light">
+  <nav class="navbar navbar-dark bg-dark">
     <div class="container-fluid">
-      <a class="navbar-brand">Chat Bot</a>
+      <a class="navbar-brand"><b>Ask'GrandPy💬</b></a>
     </div>
   </nav>
   <br />
 
-  <div class="container border border-light border-2 rounded" id="ChatBox">
+  <div class="container border border-dark border-2 border-bottom-0" id="ChatBox">
 
-    <h1>Chattez avec un bot !</h1>
+    <h1 style="color: white;">Chattez avec moi... 🤖⌨️</h1>
     <hr />
-    <div class="BotMessage card border-0">
+    <div class="BotMessage card border-0" style="background-color: #121212">
       <p class="DisplayNames card-title fw-bold text-primary">🤖 Bot</p> 
       <div class="BotMessageBody card-body border border-primary border-2 rounded">
         Vas-y, pose moi toutes les questions qui te viennent par la tête.
         Bon, faut que ça concerne un endroit sinon je risque de ramer.
-        Je suis peut être vieux, mais pas encore rouillé !
+        Je suis peut être vieux, mais pas encore rouillé ! ⚙️
       </div>
     </div>
 
@@ -42,15 +42,33 @@
 
   <div class="container">
     <form id="UserInputForm" class="row" method="post" action="#" role="form">
-      <div class="mb-3 border border-light rounded col-12">
-        <input type="text" class="form-control" id="UserInput" required="required" name ="UserInput" title="Merci de compléter ce champ.">
+      <div class="UserInputContainer mb-3 border border-dark border-top-0 border-2">
+        <input type="text" class="form-control border-dark border-2" id="UserInput" required="required" name ="UserInput" title="Merci de compléter ce champ." style="background-color: #121212">
       </div>
       <button type="submit" class="btn btn-primary col-12">Envoyer</button>
     </form>
   </div>
+  <br />
 
   <div class="container" id="map" style="width:100%;height:400px">
   </div>
+
+  <nav class="Footer navbar navbar-dark bg-dark">
+    <div class="container-fluid">
+      <ul class="nav justify-content-end">
+        <li class="nav-item">
+          <p class="nav-link" style="color:white">
+            Merci d'avoir utilisé cet outil 😊
+          </p>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link active" aria-current="page" href="#">Github</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#">LinkedIn</a>
+        </li>
+      </ul>
+    </div>
 
   <script src="{{ url_for('static', filename= 'js/script.js') }}"></script>
   <script
@@ -58,6 +76,10 @@
       async>
     </script>
   <script>
+    /*
+    Default map displayed on the application's launch.
+    Landing on Paris.
+    */
     var map;
 
     function initMap() {

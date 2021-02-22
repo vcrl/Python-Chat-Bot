@@ -4,6 +4,12 @@
 
 #UserInputForm{
     text-align: end;
+    padding-bottom: 1%;
+}
+
+.UserInputContainer{
+    border-top: none;
+    padding: 1%;
 }
 
 .UserMessage{
@@ -22,4 +28,12 @@
 #ChatBox{
     padding:1%;
     flex-wrap: wrap;
+    border-bottom: none;
 }
+
+.Footer {
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    color: black;
+  }

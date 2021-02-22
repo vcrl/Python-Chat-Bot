@@ -73,5 +73,5 @@ class Wikipedia():
         request = requests.get(url).json()
         place_info = request["extract"]
         link = request["content_urls"]["desktop"]["page"]
-        bot_answer = place_info + "</br>" + f"<a href='{link}'>[En savoir plus sur Wikipedia]</a>"
+        bot_answer = place_info + "</br>" + f"<a href='{link}' style='color:white;'>[En savoir plus sur Wikipedia]</a>"
         return bot_answer

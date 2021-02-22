@@ -45,15 +45,17 @@ def getUserData():
         wiki_answer = wiki_api.return_place_info(wiki_info)
         return jsonify({
                         'answer':f"""{choice(ANSWERS)}
+                                    </br>
+                                    La/le splendide <b>{wiki_info}</b>
                                     </br></br>
-                                    <b>Avant tout, voilà l'addresse pour y aller:
+                                    <justify>{wiki_answer}.</justify>
                                     </br></br>
-                                    </b>► <u>{address["street_number"]} 
-                                    {address["street_name"]} {address["city"]}</u>
+                                    <b>...Oh et voilà l'addresse pour y aller
                                     </br></br>
-                                    <b>{wiki_info}</b>
+                                    </b>► <u>{address["street_number"]}, 
+                                    {address["street_name"]}, {address["city"]}</u>
                                     </br></br>
-                                    <justify>{wiki_answer}.</justify>""",
+                                    """,
                         'lat':lat,
                         'lng':lng
                         })
