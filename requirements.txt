@@ -1,5 +1,3 @@
 flask
 requests
 gunicorn
-boto3
-boto
