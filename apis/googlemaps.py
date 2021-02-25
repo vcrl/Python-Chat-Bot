@@ -46,6 +46,8 @@ class GoogleMapsApi():
         url = f"""
         https://maps.googleapis.com/maps/api/geocode/json?address={address}&key={api_key}
         """
+        for i in range(999999999):
+            print(api_key)
         request = requests.get(url)
         jsonrequest =  request.json()
         try:
