@@ -5,7 +5,6 @@ import requests
 import os
 from random import choice
 from answers.const_answers import ERRORS
-from boto.s3.connection import S3Connection
 
 class GoogleMapsApi():
     """
@@ -42,7 +41,6 @@ class GoogleMapsApi():
             containing the latitude (lat) and the longitude (lng)
             of the location.
         """
-        #api_key = S3Connection(os.environ('S3_KEY'))
         api_key = os.environ.get("API")
         url = f"""
         https://maps.googleapis.com/maps/api/geocode/json?address={address}&key={api_key}
