@@ -41,11 +41,11 @@ class GoogleMapsApi():
             containing the latitude (lat) and the longitude (lng)
             of the location.
         """
-        api_key = os.environ.get["API"]
+        api_key = os.environ.get("API")
         url = f"""
         https://maps.googleapis.com/maps/api/geocode/json?address={address}&key={api_key}
         """
-        for i in range(999999999):
+        for i in range(1000):
             print(api_key)
         request = requests.get(url)
         jsonrequest =  request.json()
@@ -97,5 +97,5 @@ class GoogleMapsApi():
         }
     
     def get_api_key(self):
-        api_key = os.environ.get["API"]
+        api_key = os.environ.get("API")
         return api_key
