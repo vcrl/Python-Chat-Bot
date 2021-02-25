@@ -65,3 +65,26 @@ def getUserData():
                         'lat':None,
                         'lng':None
                         })
+
+    else:
+        lat = google_api.get_lat_lng
+        lng = google_api.get_lat_lng
+        address = google_api.get_request_address
+        wiki_info = wiki_api.get_api_request
+        wiki_answer = wiki_api.return_place_info
+        return jsonify({
+                        'answer':f"""{choice(ANSWERS)}
+                                    </br>
+                                    La/le splendide <b>{wiki_info}</b>
+                                    </br></br>
+                                    <justify>{wiki_answer}.</justify>
+                                    </br></br>
+                                    <b>...Oh et voilà l'adresse pour y aller
+                                    </br></br>
+                                    </b>► <u>{address["street_number"]}, 
+                                    {address["street_name"]}, {address["city"]}</u>
+                                    </br></br>
+                                    """,
+                        'lat':lat,
+                        'lng':lng
+                        })

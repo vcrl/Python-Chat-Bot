@@ -2,7 +2,9 @@
 Module managing the GoogleMaps API requests
 """
 import requests
+import os
 from random import choice
+from boto.s3.connection import S3Connection
 from answers.const_answers import ERRORS
 
 class GoogleMapsApi():
@@ -40,8 +42,9 @@ class GoogleMapsApi():
             containing the latitude (lat) and the longitude (lng)
             of the location.
         """
+        api_key = S3Connection(os.environ['API'])
         url = f"""
-        https://maps.googleapis.com/maps/api/geocode/json?address={address}&key=AIzaSyDPJtzrcOw2vT2zAVpENBzC7s4CkunsTfc
+        https://maps.googleapis.com/maps/api/geocode/json?address={address}&key={api_key}
         """
         request = requests.get(url)
         jsonrequest =  request.json()
