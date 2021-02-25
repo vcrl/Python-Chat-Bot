@@ -42,7 +42,8 @@ class GoogleMapsApi():
             containing the latitude (lat) and the longitude (lng)
             of the location.
         """
-        api_key = S3Connection(os.environ('S3_KEY'))
+        #api_key = S3Connection(os.environ('S3_KEY'))
+        api_key = os.environ.get("API")
         url = f"""
         https://maps.googleapis.com/maps/api/geocode/json?address={address}&key={api_key}
         """
@@ -98,5 +99,5 @@ class GoogleMapsApi():
         }
     
     def get_api_key(self):
-        api_key = S3Connection(os.environ('S3_KEY'))
+        api_key = os.environ.get("API")
         return api_key
