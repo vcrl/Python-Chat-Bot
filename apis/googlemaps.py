@@ -96,3 +96,7 @@ class GoogleMapsApi():
             "street_name" : street_name,
             "city" : city
         }
+    
+    def get_api_key(self):
+        api_key = S3Connection(os.environ.get["API"])
+        return api_key
