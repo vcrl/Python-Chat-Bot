@@ -62,7 +62,7 @@ def getUserData():
     except TypeError:
         api = google_api.get_api_key()
         return jsonify({
-                        'answer':f"{api}", #choice(ERRORS)
+                        'answer':f"{choice(ERRORS)}",
                         'lat':None,
                         'lng':None
                         })
